@@ -13,6 +13,10 @@ class AuthProvider extends ChangeNotifier {
   void signUp(User myUser) async {
     token = await AuthService().signUp(myUser);
   }
+
+  void signIn(User myUser) async {
+    token = await AuthService().signIn(myUser);
+  }
 }
 
 // Jun 22, 2022 01:38
