@@ -7,6 +7,7 @@ import 'package:trips_iu/Widget/TextField.dart';
 
 import 'package:trips_iu/models/user.dart';
 import 'package:trips_iu/providers/auth_provider.dart';
+import 'package:trips_iu/providers/trip_provider.dart';
 
 class SignInPage extends StatelessWidget {
   SignInPage({Key? key}) : super(key: key);
@@ -43,16 +44,22 @@ class SignInPage extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
-                onPressed: () {
-                  context.read<AuthProvider>().signUp(
+                onPressed: () async {
+                  await context.read<AuthProvider>().signIn(
                       User(username: _username.text, password: _password.text));
-                  context.push("/Homepage");
+
+                  if (Provider.of<AuthProvider>(context, listen: false)
+                      .token
+                      .isNotEmpty) {
+                    context.push("/Homepage");
+                    print("\n\n\n\n\n\n\nisNotEmpty\n\n\n\n\n\n");
+                  } else {
+                    print("\n\n\n\n\n\nisEmpty\n\n\n\n\n\n");
+                  }
                 },
                 child: Text("Sign in")),
             TextButton(
                 onPressed: () {
-                  context.read<AuthProvider>().signIn(
-                      User(username: _username.text, password: _password.text));
                   context.push("/SignUpPage");
                 },
                 child: Text("Creat an Account")),

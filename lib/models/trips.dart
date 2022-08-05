@@ -1,16 +1,21 @@
-import 'dart:convert';
+import "package:json_annotation/json_annotation.dart";
+part "trips.g.dart";
 
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-class Trips {
-  int? id;
+@JsonSerializable()
+class Trip {
+  int id;
   String title;
-  String description;
-  String image;
-
-  Trips({
-    this.id,
+  String? description;
+  String? image;
+  Trip({
+    required this.id,
     required this.title,
-    required this.description,
-    required this.image,
+    this.description,
+    this.image,
   });
+
+  factory Trip.fromJson(Map<String, dynamic> json) =>
+      _$TripFromJson(json); // creats a book: json => book
+  Map<String, dynamic> toJson() =>
+      _$TripToJson(this); // creat a json: book => json
 }

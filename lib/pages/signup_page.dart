@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -45,6 +47,7 @@ class SignUpPage extends StatelessWidget {
                 hintText: 'Password',
                 myIcone: Icon(Icons.password),
                 isPassword: true),
+            // ignore: prefer_const_constructors
             SizedBox(
               height: 10,
             ),

@@ -8,6 +8,8 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:trips_iu/providers/auth_provider.dart';
 
 class EditPage extends StatefulWidget {
   EditPage({Key? key}) : super(key: key);
@@ -90,6 +92,7 @@ class _EditPageState extends State<EditPage> {
           ),
           ElevatedButton(
               onPressed: () {
+                context.read<AuthProvider>().printToken();
                 context.push("/Homepage");
               },
               child: Text("Save"))

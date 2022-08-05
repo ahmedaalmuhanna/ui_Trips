@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:trips_iu/providers/auth_provider.dart';
 
 class myDrawer extends StatelessWidget {
   const myDrawer({
@@ -45,6 +47,14 @@ class myDrawer extends StatelessWidget {
             title: Text("Trips", style: TextStyle(color: Colors.black)),
             onTap: () {
               context.push("/TripsPage");
+              print("Trips");
+            }),
+        ListTile(
+            leading: Icon(Icons.logout),
+            title: Text("Logout", style: TextStyle(color: Colors.black)),
+            onTap: () {
+              Provider.of<AuthProvider>(context, listen: false).logOut();
+              // context.('/');
               print("Trips");
             }),
       ]),

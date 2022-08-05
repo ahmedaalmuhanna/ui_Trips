@@ -5,12 +5,15 @@ import 'package:trips_iu/pages/edit_page.dart';
 import 'package:trips_iu/pages/home_page.dart';
 import 'package:trips_iu/pages/signin_page.dart';
 import 'package:trips_iu/pages/signup_page.dart';
-import 'package:trips_iu/pages/trips_page.dart';
 import 'package:trips_iu/providers/auth_provider.dart';
+
+import 'pages/trip_detales_page.dart';
+import 'providers/trip_provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider())
+    ChangeNotifierProvider<AuthProvider>(create: (_) => AuthProvider()),
+    ChangeNotifierProvider<TripProvider>(create: (_) => TripProvider()),
   ], child: MyApp()));
 }
 
@@ -40,6 +43,7 @@ class MyApp extends StatelessWidget {
     GoRoute(path: '/SignUpPage', builder: (context, state) => SignUpPage()),
     GoRoute(path: '/HomePage', builder: (context, state) => HomePage()),
     GoRoute(path: '/EditPage', builder: (context, state) => EditPage()),
-    GoRoute(path: '/TripsPage', builder: (context, state) => TripsPage()),
+    GoRoute(
+        path: '/TripsPage', builder: (context, state) => Trip_detales_Page()),
   ]);
 }
